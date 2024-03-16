@@ -10,10 +10,12 @@ class IntroScreenOne extends StatefulWidget {
 
 class _IntroScreenOneState extends State<IntroScreenOne> {
   final CommonController controller = Get.find<CommonController>();
+  bool check = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.gc(AppColor.whiteBlack),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -21,19 +23,62 @@ class _IntroScreenOneState extends State<IntroScreenOne> {
             Text(
               "Intro Screen One",
               style: TextStyle(
-                fontSize: 50,
-                color: context.getColor(
+                fontSize: 30,
+                color: context.gc(
                   AppColor.blackWhite,
                 ),
               ),
             ),
+            Text(
+              "Intro Screen Two",
+              style: TextStyle(
+                fontSize: 30,
+                color: context.gc(
+                  AppColor.blackWhite,
+                ),
+              ),
+            ),
+            Text(
+              "Intro Screen Three",
+              style: TextStyle(
+                fontSize: 30,
+                color: context.gc(
+                  AppColor.blackWhite,
+                ),
+              ),
+            ),
+            Text(
+              "Intro Screen Four",
+              style: TextStyle(
+                fontSize: 30,
+                color: context.gc(
+                  AppColor.blackWhite,
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: "Ahsin",
+                  suffix: Icon(
+                    Icons.calendar_month
+                  )
+                ),
+              ),
+            ),
+            Checkbox(value: check, onChanged: (v){
+              check = v??false;
+              setState(() {
+
+              });
+            }),
             ElevatedButton(
               onPressed: () {
                 controller.setDarkTheme(
                     enableDarkTheme: !controller.isDarkTheme.value);
-                setState(() {});
               },
-              child: Text("Change Theme"),
+              child: const Text("Change Theme"),
             ),
           ],
         ),

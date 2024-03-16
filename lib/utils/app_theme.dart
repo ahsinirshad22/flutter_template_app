@@ -14,7 +14,7 @@ enum AppColor {
   gradientColor1,
   gradientColor2,
   whiteBlack,
-  blackWhite
+  blackWhite,
 }
 
 class AppTheme {
@@ -61,6 +61,8 @@ class AppTheme {
       brightness: Brightness.light,
     ),
     scaffoldBackgroundColor: lightColors[AppColor.bodyBackground] ?? white,
+    inputDecorationTheme: inputDecorationTheme(),
+    indicatorColor: primaryColor,
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -70,11 +72,43 @@ class AppTheme {
       brightness: Brightness.dark,
     ),
     scaffoldBackgroundColor: darkColors[AppColor.bodyBackground] ?? black,
+    inputDecorationTheme: inputDecorationTheme(),
+    indicatorColor: primaryColor,
   );
+
+  static InputDecorationTheme inputDecorationTheme() {
+    InputBorder activeBorder = OutlineInputBorder(
+        borderSide:
+            BorderSide(color: lightColors[AppColor.primary] ?? primaryColor),
+        borderRadius: BorderRadius.circular(5),
+        gapPadding: 2);
+
+    InputBorder inActiveBorder = OutlineInputBorder(
+        borderSide: BorderSide(
+            color: lightColors[AppColor.strokeColor] ?? primaryColor),
+        borderRadius: BorderRadius.circular(5),
+        gapPadding: 2);
+
+    InputBorder errorBorder = OutlineInputBorder(
+        borderSide: const BorderSide(color: red),
+        borderRadius: BorderRadius.circular(5),
+        gapPadding: 2);
+
+    return InputDecorationTheme(
+      border: activeBorder,
+      enabledBorder: activeBorder,
+      focusedBorder: activeBorder,
+      disabledBorder: inActiveBorder,
+      errorBorder: errorBorder,
+      focusedErrorBorder: errorBorder,
+      isCollapsed: true,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+    );
+  }
 }
 
 extension GetColor on BuildContext {
-  Color getColor(AppColor key) {
+  Color gc(AppColor key) {
     Color? toReturn;
     try {
       toReturn = Theme.of(this).brightness == Brightness.light

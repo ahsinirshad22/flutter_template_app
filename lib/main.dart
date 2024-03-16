@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
       initialBinding: ControllersBinding(),
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => IntroScreenOne()),
+        GetPage(name: '/', page: () => const IntroScreenOne()),
       ],
     );
   }
