@@ -31,7 +31,7 @@ showToast(String message) {
 
 Widget kLoadingWidget({Color? loaderColor, double? size}) => Center(
       child: SpinKitFadingCube(
-        color: loaderColor ?? AppTheme.primaryColor,
+        color: loaderColor ?? CustomAppTheme.primaryColor,
         size: size ?? 30.0,
       ),
     );

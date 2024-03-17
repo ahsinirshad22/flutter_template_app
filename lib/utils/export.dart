@@ -10,8 +10,9 @@ export 'package:get/get.dart';
 export 'package:get_secure_storage/get_secure_storage.dart';
 export 'package:url_launcher/url_launcher.dart';
 
+export '../theme/app_color.dart';
+export '../theme/custom_app_theme.dart';
 export './app_constant.dart';
 export './app_helper.dart';
 export './app_images.dart';
 export './app_text.dart';
-export './app_theme.dart';

@@ -1,3 +1,5 @@
+import 'package:flutter_template/theme/app_text_theme.dart';
+
 import '../../controller/common_controller.dart';
 import '../../utils/export.dart';
 
@@ -40,39 +42,33 @@ class _IntroScreenOneState extends State<IntroScreenOne> {
             ),
             Text(
               "Intro Screen Three",
-              style: TextStyle(
-                fontSize: 30,
-                color: context.gc(
-                  AppColor.blackWhite,
-                ),
-              ),
+              style: context.effraTextStyle(),
             ),
             Text(
               "Intro Screen Four",
-              style: TextStyle(
-                fontSize: 30,
-                color: context.gc(
-                  AppColor.blackWhite,
-                ),
-              ),
+              style: context.openSansTextStyle(),
+            ),
+            Text(
+              "Intro Screen Five",
+              style: context.openSansTextStyle().copyWith(
+                    color: context.gc(
+                      AppColor.bodyColor2,
+                    ),
+                  ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: TextField(
                 decoration: InputDecoration(
-                  labelText: "Ahsin",
-                  suffix: Icon(
-                    Icons.calendar_month
-                  )
-                ),
+                    labelText: "Ahsin", suffix: Icon(Icons.calendar_month)),
               ),
             ),
-            Checkbox(value: check, onChanged: (v){
-              check = v??false;
-              setState(() {
-
-              });
-            }),
+            Checkbox(
+                value: check,
+                onChanged: (v) {
+                  check = v ?? false;
+                  setState(() {});
+                }),
             ElevatedButton(
               onPressed: () {
                 controller.setDarkTheme(

@@ -1,23 +1,10 @@
-import 'package:flutter/material.dart';
+import '../utils/export.dart';
+import 'app_input_decoration_theme.dart';
+import 'app_text_theme.dart';
 
-import 'export.dart';
+class CustomAppTheme {
+  CustomAppTheme._();
 
-enum AppColor {
-  primary,
-  bodyBackground,
-  lightBlue,
-  darkBlue,
-  headingColor,
-  bodyColor1,
-  bodyColor2,
-  strokeColor,
-  gradientColor1,
-  gradientColor2,
-  whiteBlack,
-  blackWhite,
-}
-
-class AppTheme {
   static const Color primaryColor = Color(0xff8271EE);
   static const Color white = Colors.white;
   static const Color black = Colors.black;
@@ -25,7 +12,7 @@ class AppTheme {
   static const transparent = Colors.transparent;
 
   static Map<AppColor, Color> lightColors = {
-    AppColor.primary: const Color(0xff8271EE),
+    AppColor.primary: primaryColor,
     AppColor.bodyBackground: const Color(0xffF8F8F8),
     AppColor.lightBlue: const Color(0xff3DAAE0),
     AppColor.darkBlue: const Color(0xff6383FA),
@@ -40,7 +27,7 @@ class AppTheme {
   };
 
   static Map<AppColor, Color> darkColors = {
-    AppColor.primary: const Color(0xff8271EE),
+    AppColor.primary: primaryColor,
     AppColor.bodyBackground: const Color(0xffF8F8F8),
     AppColor.lightBlue: const Color(0xff3DAAE0),
     AppColor.darkBlue: const Color(0xff6383FA),
@@ -61,8 +48,9 @@ class AppTheme {
       brightness: Brightness.light,
     ),
     scaffoldBackgroundColor: lightColors[AppColor.bodyBackground] ?? white,
-    inputDecorationTheme: inputDecorationTheme(),
+    inputDecorationTheme: AppInputDecorationTheme.lightInputDecorationTheme(),
     indicatorColor: primaryColor,
+    textTheme: AppTextTheme.lightTextTheme,
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -72,51 +60,8 @@ class AppTheme {
       brightness: Brightness.dark,
     ),
     scaffoldBackgroundColor: darkColors[AppColor.bodyBackground] ?? black,
-    inputDecorationTheme: inputDecorationTheme(),
+    inputDecorationTheme: AppInputDecorationTheme.darkInputDecorationTheme(),
     indicatorColor: primaryColor,
+    textTheme: AppTextTheme.darkTextTheme,
   );
-
-  static InputDecorationTheme inputDecorationTheme() {
-    InputBorder activeBorder = OutlineInputBorder(
-        borderSide:
-            BorderSide(color: lightColors[AppColor.primary] ?? primaryColor),
-        borderRadius: BorderRadius.circular(5),
-        gapPadding: 2);
-
-    InputBorder inActiveBorder = OutlineInputBorder(
-        borderSide: BorderSide(
-            color: lightColors[AppColor.strokeColor] ?? primaryColor),
-        borderRadius: BorderRadius.circular(5),
-        gapPadding: 2);
-
-    InputBorder errorBorder = OutlineInputBorder(
-        borderSide: const BorderSide(color: red),
-        borderRadius: BorderRadius.circular(5),
-        gapPadding: 2);
-
-    return InputDecorationTheme(
-      border: activeBorder,
-      enabledBorder: activeBorder,
-      focusedBorder: activeBorder,
-      disabledBorder: inActiveBorder,
-      errorBorder: errorBorder,
-      focusedErrorBorder: errorBorder,
-      isCollapsed: true,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-    );
-  }
-}
-
-extension GetColor on BuildContext {
-  Color gc(AppColor key) {
-    Color? toReturn;
-    try {
-      toReturn = Theme.of(this).brightness == Brightness.light
-          ? AppTheme.lightColors[key]
-          : AppTheme.darkColors[key];
-    } catch (e) {
-      toReturn = null;
-    }
-    return toReturn ?? Colors.orange;
-  }
 }

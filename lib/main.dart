@@ -33,8 +33,8 @@ class _MyAppState extends State<MyApp> {
       translations: AppTranslations(),
       locale: Get.deviceLocale,
       themeMode: ThemeMode.light,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
+      theme: CustomAppTheme.lightTheme,
+      darkTheme: CustomAppTheme.darkTheme,
       fallbackLocale: const Locale('en'),
       initialBinding: ControllersBinding(),
       initialRoute: '/',
@@ -44,5 +44,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
-// theme: ThemeData(fontFamily: 'Effra'),
