@@ -15,4 +15,3 @@ export '../theme/custom_app_theme.dart';
 export './app_constant.dart';
 export './app_helper.dart';
 export './app_images.dart';
-export './app_text.dart';
